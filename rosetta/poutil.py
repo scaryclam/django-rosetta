@@ -76,7 +76,7 @@ def find_pos(lang, project_apps=True, django_apps=False, third_party_apps=False)
             continue
         p = appname.rfind('.')
         if p >= 0:
-            app = getattr(__import__(appname[:p], {}, {}, [str(appname[p + 1:])]), appname[p + 1:])
+            app = __import__(appname, {}, {}, [str(appname)])
         else:
             app = __import__(appname, {}, {}, [])
 
